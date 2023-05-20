@@ -48,7 +48,8 @@ export const register = async (req: express.Request, res: express.Response) => {
         const existingUser = await getUserByEmail(email);
 
         if (existingUser) {
-            return res.sendStatus(400);
+
+            return res.sendStatus(400).json('email already exits')
         }
 
         const salt = random();
